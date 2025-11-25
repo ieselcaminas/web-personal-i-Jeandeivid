@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h2>{{ manga.titulo }}</h2>
+<p><strong>Autor:</strong> {{ manga.autor }}</p>
+<p><strong>Editorial:</strong> {{ manga.editorial }}</p>
+
+<a href="{{ path('app_manga_edit', {'id': manga.id}) }}">Editar</a> |
+<a href="{{ path('app_manga_index') }}">Volver</a>
+
+<form method="post" action="{{ path('app_manga_delete', {'id': manga.id}) }}" onsubmit="return confirm('¿Seguro que quieres eliminar este manga?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ manga.id) }}">
+    <button type="submit">Eliminar</button>
+</form>
+{% endblock %}

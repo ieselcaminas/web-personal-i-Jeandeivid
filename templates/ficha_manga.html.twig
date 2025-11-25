@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+{% block title %}Ficha del Manga - {{ manga.titulo }}{% endblock %}
+
+{% block body %}
+{% if manga %}
+    <h1>{{ manga.titulo }}</h1>
+    <p><strong>Autor:</strong> {{ manga.autor }}</p>
+    <p><strong>Editorial:</strong> {{ manga.editorial }}</p>
+{% else %}
+    <h1>Manga no encontrado</h1>
+{% endif %}
+{% endblock %}
+

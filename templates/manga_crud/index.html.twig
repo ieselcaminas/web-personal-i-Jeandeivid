@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1>Listado de Mangas</h1>
+
+<a href="{{ path('app_manga_new') }}">Añadir nuevo manga</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Autor</th>
+            <th>Editorial</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for manga in mangas %}
+            <tr>
+                <td>{{ manga.titulo }}</td>
+                <td>{{ manga.autor }}</td>
+                <td>{{ manga.editorial }}</td>
+                <td>
+                    <a href="{{ path('app_manga_show', {'id': manga.id}) }}">Ver</a> |
+                    <a href="{{ path('app_manga_edit', {'id': manga.id}) }}">Editar</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr><td colspan="4">No hay mangas registrados.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

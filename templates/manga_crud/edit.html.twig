@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1>{{ app.request.attributes.get('_route') == 'app_manga_new' ? 'Nuevo Manga' : 'Editar Manga' }}</h1>
+
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button type="submit" class="btn">{{ app.request.attributes.get('_route') == 'app_manga_new' ? 'Guardar' : 'Actualizar' }}</button>
+{{ form_end(form) }}
+
+<a href="{{ path('app_manga_index') }}">Volver al listado</a>
+{% endblock %}
